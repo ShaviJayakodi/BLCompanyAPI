@@ -1,4 +1,4 @@
-﻿using BLCompanyAPI.Model;
+﻿
 using BLCompanyAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +9,11 @@ namespace BLCompanyAPI.Controllers
     [ApiController]
     public class FlowersController : ControllerBase
     {
-        private FlowerService _flowerService;
+        private readonly IFlowerRepo _flowerService;
 
-        public FlowersController()
+        public FlowersController(IFlowerRepo flowerRepo)
         {
-            _flowerService = new FlowerService();
+            _flowerService = flowerRepo;
         }
 
         [HttpGet]

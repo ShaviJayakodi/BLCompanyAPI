@@ -2,7 +2,7 @@
 
 namespace BLCompanyAPI.Services
 {
-    public class FlowerService
+    public class FlowerService:IFlowerRepo
     {
         public List<Flower> AllFlowers()
         {

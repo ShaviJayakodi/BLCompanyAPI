@@ -5,6 +5,10 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLCompanyAPI", "BLCompanyAPI\BLCompanyAPI.csproj", "{3BFBA18D-34AF-418B-899F-D8EBDD86CF07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLCompanyAPI.Model", "BLCompanyAPI.Models\BLCompanyAPI.Model.csproj", "{94DAD49C-DA20-4124-924C-59A4866EA1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLCompanyAPI.Services", "BLCompanyAPI.Services\BLCompanyAPI.Services.csproj", "{DC935228-D467-48F7-8B58-51CD54EF120F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3BFBA18D-34AF-418B-899F-D8EBDD86CF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BFBA18D-34AF-418B-899F-D8EBDD86CF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BFBA18D-34AF-418B-899F-D8EBDD86CF07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94DAD49C-DA20-4124-924C-59A4866EA1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94DAD49C-DA20-4124-924C-59A4866EA1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94DAD49C-DA20-4124-924C-59A4866EA1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94DAD49C-DA20-4124-924C-59A4866EA1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC935228-D467-48F7-8B58-51CD54EF120F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC935228-D467-48F7-8B58-51CD54EF120F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC935228-D467-48F7-8B58-51CD54EF120F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC935228-D467-48F7-8B58-51CD54EF120F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
