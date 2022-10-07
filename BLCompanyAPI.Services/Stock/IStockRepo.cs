@@ -1,4 +1,4 @@
-﻿using BLCompanyAPI.Model;
+﻿using BLCompanyAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BLCompanyAPI.Services
 {
-    public interface IFlowerRepo
+    public interface IStockRepo
     {
-        public List<Flower> AllFlowers();
+        public List<Stock> GetStocks();
+        public Stock GetStock(int stockId);
     }
 }

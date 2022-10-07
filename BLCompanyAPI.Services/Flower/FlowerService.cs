@@ -1,8 +1,8 @@
-﻿using BLCompanyAPI.Model;
+﻿using BLCompanyAPI.Models;
 
 namespace BLCompanyAPI.Services
 {
-    public class FlowerService:IFlowerRepo
+    public class FlowerService
     {
         public List<Flower> AllFlowers()
         {

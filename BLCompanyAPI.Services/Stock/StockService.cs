@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLCompanyAPI.Models
+namespace BLCompanyAPI.Services
 {
-    public enum StatusValue
+    public class StockService
     {
-        Deactive,
-        Active
     }
 }

@@ -8,7 +8,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IFlowerRepo , FlowerService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IFlowerRepo , FlowersService>();
+builder.Services.AddScoped<ICategoryRepo, CategoryService>();
 
 var app = builder.Build();
 
