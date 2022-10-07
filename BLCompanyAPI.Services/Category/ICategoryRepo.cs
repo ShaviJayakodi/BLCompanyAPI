@@ -12,5 +12,6 @@ namespace BLCompanyAPI.Services
         public List<Category> GetCategories();
 
         public Category GetCategory(int categoryId);
+        public Category AddCategory(Category category);
     }
 }

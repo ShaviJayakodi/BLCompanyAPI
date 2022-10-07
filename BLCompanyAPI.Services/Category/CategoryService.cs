@@ -18,7 +18,22 @@ namespace BLCompanyAPI.Services
 
         public Category GetCategory(int categoryId)
         {
-           return _context.Categories.Find(categoryId);
+           var foundCategory = _context.Categories.Find(categoryId);
+            return foundCategory;
         }
+
+        public Category AddCategory(Category category)
+        {
+            
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+
+            return _context.Categories.Find(category.categoryId);
+
+
+        }
+
+    
+
     }
 }

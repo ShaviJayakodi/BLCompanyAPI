@@ -12,5 +12,9 @@ namespace BLCompanyAPI.Services
         public List<Flower> AllFlowers();
 
         public Flower GetFlower(int flowerId);
+
+        public List<Flower> GetFlowerByCategoryId(int categoryId);
+
+        public Flower addNewFlower(Flower flower);
     }
 }

@@ -18,6 +18,7 @@ namespace BLCompanyAPI.Services.Profilels
                 opt => opt.MapFrom(src => src.flowerId))
                 .ForMember(dest=> dest.category,
                 opt=>opt.MapFrom(src=>src.Stock.quientity));
+            CreateMap<CreateFlowerDTO, Flower>();
         }
     }
 }

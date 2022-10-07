@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace BLCompanyAPI.Services.Model
 {
-    public class FlowerDTO
-    {
-        public int flowerId { get; set; }
+    public class CreateFlowerDTO
+    { 
         public string flowerName { get; set; }
-        public Decimal price { get; set; }
-        public int stock { get; set; }
-        public String category { get; set; }
-        public int categoryId { get; set; } 
+ 
+        public string flowerDescription { get; set; }
+ 
+        public StatusValue status { get; set; } = StatusValue.Active;
 
+        public Decimal price { get; set; }
+        public int categoryId { get; set; }
+  
     }
 }
