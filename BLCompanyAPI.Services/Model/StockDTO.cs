@@ -1,24 +1,20 @@
-﻿using System;
+﻿using BLCompanyAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLCompanyAPI.Models
+namespace BLCompanyAPI.Services.Model
 {
-    public class Stock
+    public class StockDTO
     {
-        [Key]
-        [Required]
-        [MaxLength(10)]
+        
         public int stockId { get; set; }
-        [MaxLength(100)]
         public string stockName { get; set; }
-        [MaxLength(100)]
         public int quientity { get; set; }
         public int FlowerId { get; set; }
-        public Flower flower { get; set; }
-
+       
     }
 }

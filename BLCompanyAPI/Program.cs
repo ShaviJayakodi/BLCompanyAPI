@@ -12,6 +12,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IFlowerRepo , FlowersService>();
 builder.Services.AddScoped<ICategoryRepo, CategoryService>();
+builder.Services.AddScoped<IStockRepo,StockService>();
 
 var app = builder.Build();
 

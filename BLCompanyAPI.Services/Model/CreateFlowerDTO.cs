@@ -11,13 +11,12 @@ namespace BLCompanyAPI.Services.Model
     public class CreateFlowerDTO
     { 
         public string flowerName { get; set; }
- 
         public string flowerDescription { get; set; }
- 
         public StatusValue status { get; set; } = StatusValue.Active;
-
         public Decimal price { get; set; }
         public int categoryId { get; set; }
-  
+        public ICollection<CreateStockDTO> stocks { get; set; } = new List<CreateStockDTO>();
+
+
     }
 }

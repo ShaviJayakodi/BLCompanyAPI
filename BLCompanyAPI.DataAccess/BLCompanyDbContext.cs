@@ -16,7 +16,7 @@ namespace BLCompanyAPI.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conn = "Data Source=DESKTOP-NBK61D5\\SQL2019;Initial Catalog=BLCompanyDataBase;Persist Security Info=True;User ID=sa;Password=root@123";
+            var conn = "Data Source=DESKTOP-NBK61D5\\SQL2019;Initial Catalog=BLCMDB;Persist Security Info=True;User ID=sa;Password=root@123";
             optionsBuilder.UseSqlServer(conn);
         }
     }

@@ -1,5 +1,7 @@
-﻿using BLCompanyAPI.DataAccess;
+﻿using AutoMapper;
+using BLCompanyAPI.DataAccess;
 using BLCompanyAPI.Models;
+using BLCompanyAPI.Services.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,28 @@ namespace BLCompanyAPI.Services
     public class FlowersService : IFlowerRepo
     {
         private readonly BLCompanyDbContext _context = new BLCompanyDbContext();
+        private readonly IMapper _mapper;
 
         public Flower addNewFlower(Flower flower)
         {
-           _context.Flowers.Add(flower);
-           _context.SaveChanges();
-            return _context.Flowers.Find(flower.flowerId);
+
+            /*
+              Flower newFlower = new Flower(); ;
+              newFlower.flowerName = flower.flowerName;
+              newFlower.flowerDescription = flower.flowerDescription;
+              newFlower.price = flower.price;
+              newFlower.categoryId = flower.categoryId;
+              //newFlower.stock = flower.stock;
+              var stockEntity = _context.Stocks.Add(flower.stock);
+              var flowerForReturn = _mapper.Map<StockDTO>(stockEntity); 
+              int id = flowerForReturn.stockId;
+              newFlower.stockId = id;
+
+
+              _context.Flowers.Add(newFlower);
+             _context.SaveChanges();
+              return _context.Flowers.Find(newFlower.flowerId);*/
+            return flower;
         }
 
         public List<Flower> AllFlowers()

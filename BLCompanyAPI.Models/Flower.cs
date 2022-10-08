@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BLCompanyAPI.Models
 {
     public class Flower
@@ -22,10 +23,10 @@ namespace BLCompanyAPI.Models
         public StatusValue status { get; set; } = StatusValue.Active;
         [MaxLength(50)]
         public Decimal price { get; set; }
-
         public Category category { get; set; }
         public int categoryId { get; set; }
-        public Stock Stock{ get; set; }
-       
+        public ICollection<Stock> Stocks { get; set; }= new List<Stock>();
+
+    
     }
 }

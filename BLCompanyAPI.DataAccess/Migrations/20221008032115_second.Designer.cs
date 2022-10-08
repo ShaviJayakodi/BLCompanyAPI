@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BLCompanyAPI.DataAccess.Migrations
 {
     [DbContext(typeof(BLCompanyDbContext))]
-    [Migration("20221007005845_rela")]
-    partial class rela
+    [Migration("20221008032115_second")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,17 +27,20 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 {
                     b.Property<int>("categoryId")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("categoryId"), 1L, 1);
 
                     b.Property<string>("categoryDescription")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("categoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("categoryId");
 
@@ -48,6 +51,7 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 {
                     b.Property<int>("flowerId")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("flowerId"), 1L, 1);
@@ -57,13 +61,20 @@ namespace BLCompanyAPI.DataAccess.Migrations
 
                     b.Property<string>("flowerDescription")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("flowerName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("price")
+                        .HasMaxLength(50)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("status")
+                        .HasMaxLength(1)
                         .HasColumnType("int");
 
                     b.HasKey("flowerId");
@@ -77,23 +88,26 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 {
                     b.Property<int>("stockId")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("stockId"), 1L, 1);
 
-                    b.Property<int>("flowerId")
+                    b.Property<int>("FlowerId")
                         .HasColumnType("int");
 
                     b.Property<int>("quientity")
+                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<string>("stockName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("stockId");
 
-                    b.HasIndex("flowerId");
+                    b.HasIndex("FlowerId");
 
                     b.ToTable("Stocks");
                 });
@@ -101,7 +115,7 @@ namespace BLCompanyAPI.DataAccess.Migrations
             modelBuilder.Entity("BLCompanyAPI.Models.Flower", b =>
                 {
                     b.HasOne("BLCompanyAPI.Models.Category", "category")
-                        .WithMany()
+                        .WithMany("Flowers")
                         .HasForeignKey("categoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -112,12 +126,22 @@ namespace BLCompanyAPI.DataAccess.Migrations
             modelBuilder.Entity("BLCompanyAPI.Models.Stock", b =>
                 {
                     b.HasOne("BLCompanyAPI.Models.Flower", "flower")
-                        .WithMany()
-                        .HasForeignKey("flowerId")
+                        .WithMany("Stocks")
+                        .HasForeignKey("FlowerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("flower");
+                });
+
+            modelBuilder.Entity("BLCompanyAPI.Models.Category", b =>
+                {
+                    b.Navigation("Flowers");
+                });
+
+            modelBuilder.Entity("BLCompanyAPI.Models.Flower", b =>
+                {
+                    b.Navigation("Stocks");
                 });
 #pragma warning restore 612, 618
         }

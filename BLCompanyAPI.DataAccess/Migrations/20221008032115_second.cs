@@ -4,7 +4,7 @@
 
 namespace BLCompanyAPI.DataAccess.Migrations
 {
-    public partial class rela : Migration
+    public partial class second : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,10 +12,10 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    categoryId = table.Column<int>(type: "int", nullable: false)
+                    categoryId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    categoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    categoryDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    categoryName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    categoryDescription = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,11 +26,12 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 name: "Flowers",
                 columns: table => new
                 {
-                    flowerId = table.Column<int>(type: "int", nullable: false)
+                    flowerId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    flowerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    flowerDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    status = table.Column<int>(type: "int", nullable: false),
+                    flowerName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    flowerDescription = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    status = table.Column<int>(type: "int", maxLength: 1, nullable: false),
+                    price = table.Column<decimal>(type: "decimal(18,2)", maxLength: 50, nullable: false),
                     categoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -48,18 +49,18 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 name: "Stocks",
                 columns: table => new
                 {
-                    stockId = table.Column<int>(type: "int", nullable: false)
+                    stockId = table.Column<int>(type: "int", maxLength: 10, nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    stockName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    quientity = table.Column<int>(type: "int", nullable: false),
-                    flowerId = table.Column<int>(type: "int", nullable: false)
+                    stockName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    quientity = table.Column<int>(type: "int", maxLength: 100, nullable: false),
+                    FlowerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Stocks", x => x.stockId);
                     table.ForeignKey(
-                        name: "FK_Stocks_Flowers_flowerId",
-                        column: x => x.flowerId,
+                        name: "FK_Stocks_Flowers_FlowerId",
+                        column: x => x.FlowerId,
                         principalTable: "Flowers",
                         principalColumn: "flowerId",
                         onDelete: ReferentialAction.Cascade);
@@ -71,9 +72,9 @@ namespace BLCompanyAPI.DataAccess.Migrations
                 column: "categoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Stocks_flowerId",
+                name: "IX_Stocks_FlowerId",
                 table: "Stocks",
-                column: "flowerId");
+                column: "FlowerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

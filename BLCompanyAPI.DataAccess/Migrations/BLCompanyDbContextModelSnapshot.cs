@@ -91,7 +91,7 @@ namespace BLCompanyAPI.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("stockId"), 1L, 1);
 
-                    b.Property<int>("flowerId")
+                    b.Property<int>("FlowerId")
                         .HasColumnType("int");
 
                     b.Property<int>("quientity")
@@ -105,8 +105,7 @@ namespace BLCompanyAPI.DataAccess.Migrations
 
                     b.HasKey("stockId");
 
-                    b.HasIndex("flowerId")
-                        .IsUnique();
+                    b.HasIndex("FlowerId");
 
                     b.ToTable("Stocks");
                 });
@@ -125,8 +124,8 @@ namespace BLCompanyAPI.DataAccess.Migrations
             modelBuilder.Entity("BLCompanyAPI.Models.Stock", b =>
                 {
                     b.HasOne("BLCompanyAPI.Models.Flower", "flower")
-                        .WithOne("stock")
-                        .HasForeignKey("BLCompanyAPI.Models.Stock", "flowerId")
+                        .WithMany("Stocks")
+                        .HasForeignKey("FlowerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -140,8 +139,7 @@ namespace BLCompanyAPI.DataAccess.Migrations
 
             modelBuilder.Entity("BLCompanyAPI.Models.Flower", b =>
                 {
-                    b.Navigation("stock")
-                        .IsRequired();
+                    b.Navigation("Stocks");
                 });
 #pragma warning restore 612, 618
         }
