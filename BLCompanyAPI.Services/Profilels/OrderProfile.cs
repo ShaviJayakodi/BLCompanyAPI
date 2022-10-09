@@ -15,6 +15,7 @@ namespace BLCompanyAPI.Services.Profilels
         {
             CreateMap<CreateOrderDTO, Order>();
             CreateMap<Order, OrderDTO>();
+            CreateMap<UpdateOrderDTO, Order>();
         }
     }
 }

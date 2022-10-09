@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLCompanyAPI.DataAccess;
+using BLCompanyAPI.DataAccess.Migrations;
 using BLCompanyAPI.Models;
 using BLCompanyAPI.Services.Model;
 using BLCompanyAPI.Services.Orders;
@@ -27,6 +28,52 @@ namespace BLCompanyAPI.Controllers
             var orders = _orderService.GetAllOrders();
             var mappedOrder = _mapper.Map<ICollection<OrderDTO>>(orders);
             return Ok(mappedOrder);
+        }
+
+        [HttpGet("{orderId}",Name ="GetOrderByOrderID")]
+        public ActionResult<OrderDTO> GetOrderByOrderID(int orderId)
+        {
+            var order = _orderService.GetOrderById(orderId);
+            if(order==null)
+            {
+                return NotFound();
+            }
+            var orderForReturn = _mapper.Map<OrderDTO>(order);  
+            return Ok(orderForReturn);
+        }
+
+        [HttpPost]
+        public ActionResult<OrderDTO> addNewOrder (CreateOrderDTO order)
+        {
+            var flowerEntity = _mapper.Map<Order>(order);
+            var newOrder = _orderService.AddNewOrder(flowerEntity);
+            var orderForReturn=_mapper.Map<OrderDTO>(newOrder);
+            return CreatedAtRoute("GetOrderByOrderID", new {orderId = orderForReturn.orderId},orderForReturn);
+        }
+
+        [HttpPut("{orderId}" , Name ="UpdateOrderById")]
+        public ActionResult UpdateOrderById(int orderId,UpdateOrderDTO order)
+        {
+            var orderUpdate = _orderService.GetOrderById(orderId);
+            if( orderUpdate==null)
+            {
+                return NotFound();
+            }
+            var mappedOrder = _mapper.Map(order,orderUpdate);
+            _orderService.updateOrder(mappedOrder);
+            return NoContent();
+
+        }
+        [HttpDelete("{orderId}",Name ="DeleteOrderById")]
+        public ActionResult DeleteOrderById (int orderId)
+        {
+            var orderForDelete = _orderService.GetOrderById(orderId);
+            if (orderForDelete == null)
+            {
+                return NotFound();
+            }
+            _orderService.deleteOrder(orderForDelete);
+            return NoContent();
         }
 
     } 

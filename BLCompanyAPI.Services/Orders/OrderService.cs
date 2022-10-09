@@ -13,12 +13,15 @@ namespace BLCompanyAPI.Services.Orders
         private readonly BLCompanyDbContext _context = new BLCompanyDbContext();
         public Order AddNewOrder(Order order)
         {
-            throw new NotImplementedException();
+           _context.Orders.Add(order);
+            _context.SaveChanges();
+            return _context.Orders.Find(order.orderId);
         }
 
         public void deleteOrder(Order order)
         {
-            throw new NotImplementedException();
+           _context.Remove(order);
+            _context.SaveChanges();
         }
 
         public List<Order> GetAllOrders()
@@ -28,12 +31,12 @@ namespace BLCompanyAPI.Services.Orders
 
         public Order GetOrderById(int orderId)
         {
-            throw new NotImplementedException();
+            return _context.Orders.Find(orderId);
         }
 
         public void updateOrder(Order order)
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
