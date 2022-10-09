@@ -1,8 +1,9 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 
@@ -25,7 +26,9 @@ namespace BLCompanyAPI.Models
         public Decimal price { get; set; }
         public Category category { get; set; }
         public int categoryId { get; set; }
+        [JsonIgnore]
         public ICollection<Stock> Stocks { get; set; }= new List<Stock>();
+        public ICollection<Order> orders { get; set; }= new List<Order>();
 
     
     }

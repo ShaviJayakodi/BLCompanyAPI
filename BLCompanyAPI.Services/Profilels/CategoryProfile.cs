@@ -15,6 +15,7 @@ namespace BLCompanyAPI.Services.Profilels
         {
             CreateMap<Category, CategoryDTO>();
             CreateMap<CreateCategoryDTO, Category>();
+            CreateMap<UpdateCategoryDTO,Category>();
         }
     }
 }

@@ -1,4 +1,5 @@
 using BLCompanyAPI.Services;
+using BLCompanyAPI.Services.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IFlowerRepo , FlowersService>();
 builder.Services.AddScoped<ICategoryRepo, CategoryService>();
 builder.Services.AddScoped<IStockRepo,StockService>();
+builder.Services.AddScoped<IOrderRepo, OrderService>();
 
 var app = builder.Build();
 

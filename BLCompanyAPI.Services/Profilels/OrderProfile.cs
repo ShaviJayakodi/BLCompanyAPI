@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace BLCompanyAPI.Services.Profilels
 {
-    public class StockProfile:Profile
+    public class OrderProfile:Profile
     {
-        public StockProfile()
+        public OrderProfile()
         {
-            CreateMap<CreateStockDTO, Stock>();
-            CreateMap<Stock, StockDTO>();
-            CreateMap<UpdateStockDTO,Stock>();
+            CreateMap<CreateOrderDTO, Order>();
+            CreateMap<Order, OrderDTO>();
         }
     }
 }

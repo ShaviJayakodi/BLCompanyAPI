@@ -4,6 +4,7 @@ using BLCompanyAPI.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BLCompanyAPI.DataAccess.Migrations
 {
     [DbContext(typeof(BLCompanyDbContext))]
-    partial class BLCompanyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221008123115_ordrer")]
+    partial class ordrer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

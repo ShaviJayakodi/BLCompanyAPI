@@ -16,5 +16,9 @@ namespace BLCompanyAPI.Services
         public List<Flower> GetFlowerByCategoryId(int categoryId);
 
         public Flower addNewFlower(Flower flower);
+        public void UpdateFlower(Flower flower);
+
+        public void DeleteFlower(Flower flower);
     }
+
 }

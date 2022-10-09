@@ -13,5 +13,8 @@ namespace BLCompanyAPI.Services
 
         public Category GetCategory(int categoryId);
         public Category AddCategory(Category category);
+
+        public void UpdateCategory (Category category);
+        public void DeleteCategory(Category category);
     }
 }

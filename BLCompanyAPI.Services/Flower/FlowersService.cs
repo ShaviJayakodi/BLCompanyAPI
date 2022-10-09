@@ -17,30 +17,27 @@ namespace BLCompanyAPI.Services
 
         public Flower addNewFlower(Flower flower)
         {
+            _context.Flowers.Add(flower);
+            _context.SaveChanges();
 
-            /*
-              Flower newFlower = new Flower(); ;
-              newFlower.flowerName = flower.flowerName;
-              newFlower.flowerDescription = flower.flowerDescription;
-              newFlower.price = flower.price;
-              newFlower.categoryId = flower.categoryId;
-              //newFlower.stock = flower.stock;
-              var stockEntity = _context.Stocks.Add(flower.stock);
-              var flowerForReturn = _mapper.Map<StockDTO>(stockEntity); 
-              int id = flowerForReturn.stockId;
-              newFlower.stockId = id;
-
-
-              _context.Flowers.Add(newFlower);
-             _context.SaveChanges();
-              return _context.Flowers.Find(newFlower.flowerId);*/
-            return flower;
+            return _context.Flowers.Find(flower.flowerId);
         }
 
         public List<Flower> AllFlowers()
         {
+         
             return _context.Flowers.ToList();
         }
+
+        public void DeleteFlower(Flower flower)
+        {
+            _context.Remove(flower);
+            _context.SaveChanges();
+        }
+        
+       
+
+
 
         public Flower GetFlower(int flowerId)
         {
@@ -53,12 +50,14 @@ namespace BLCompanyAPI.Services
             return _context.Flowers.Where(f => f.categoryId == categoryId).ToList();
         }
 
-       /* public Flower GetUiqueFlower(int categoryId, int flowerId)
+        public void UpdateFlower(Flower flower)
         {
-           return _context.Flowers.Find(categoryId, flowerId);
-            
-        }*/
+            _context.Remove(flower);
+            _context.SaveChanges();
+        }
 
-         
+      
+
+
     }
 }

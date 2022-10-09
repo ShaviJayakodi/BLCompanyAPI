@@ -33,7 +33,15 @@ namespace BLCompanyAPI.Services
 
         }
 
-    
+        public void UpdateCategory(Category category)
+        {
+            _context.SaveChanges();
+        }
 
+        public void DeleteCategory(Category category)
+        {
+            _context.Remove(category);
+            _context.SaveChanges();
+        }
     }
 }

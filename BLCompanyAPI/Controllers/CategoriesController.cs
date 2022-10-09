@@ -29,7 +29,7 @@ namespace BLCompanyAPI.Controllers
         }
 
 
-        [HttpGet("{categoryId}" ,Name = "GetCategoryById")]
+        [HttpGet("{categoryId}", Name = "GetCategoryById")]
         public ActionResult<CategoryDTO> GetCategoryById(int categoryId)
         {
             var category = _categoryService.GetCategory(categoryId);
@@ -49,8 +49,35 @@ namespace BLCompanyAPI.Controllers
             var CategoryForReturn = _mapper.Map<CategoryDTO>(categoryEntity);
             //return CreatedAtRoute("GetCategoty", new { categoryId = CategoryForReturn.categoryId });
             return CreatedAtRoute("GetCategoryById", new { categoryId = CategoryForReturn.categoryId }, CategoryForReturn);
-           
+
+        }
+
+
+        [HttpPut("{categoryId}", Name ="UpdateCategoryById")]
+        public ActionResult UpdateCategoryById(int categoryId, UpdateCategoryDTO category)
+        {
+            var updateCategory = _categoryService.GetCategory(categoryId);
+            if(updateCategory == null)
+            {
+                return NotFound();
             }
-        
+            var mappedCategory = _mapper.Map(category, updateCategory);
+            _categoryService.UpdateCategory(mappedCategory);
+            return NoContent();
+        }
+
+
+        [HttpDelete("{categoryId}", Name ="DeleteCategoryById")]
+        public ActionResult DeleteCategoryById(int categoryId)
+        {
+
+            var deleteCategory = _categoryService.GetCategory(categoryId);
+            if (deleteCategory == null)
+            {
+                return NotFound();
+            }
+            _categoryService.DeleteCategory(deleteCategory);
+            return NoContent();
+        }
     }
 }

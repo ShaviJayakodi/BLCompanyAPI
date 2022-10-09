@@ -13,8 +13,11 @@ namespace BLCompanyAPI.Services.Profilels
     {
         public FlowerProfile()
         {
-            CreateMap<Flower, FlowerDTO>();
+            CreateMap<Flower, FlowerDTO>()
+                .ForMember(des=> des.stocks,
+                opt=>opt.MapFrom(src=>src.Stocks.Where(s=>s.FlowerId==src.flowerId)));
             CreateMap<CreateFlowerDTO, Flower>();
+            CreateMap<UpdateFlowerDTO, Flower>(); 
         }
     }
 }
